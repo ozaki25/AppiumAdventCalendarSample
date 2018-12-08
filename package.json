@@ -12,10 +12,12 @@
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
+    "appium": "^1.10.0",
     "expo": "^31.0.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-navigation": "^2.18.2"
+    "react-navigation": "^2.18.2",
+    "wd": "^1.11.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",

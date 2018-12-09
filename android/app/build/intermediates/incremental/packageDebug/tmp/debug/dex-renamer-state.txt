@@ -1,0 +1,4 @@
+#Sun Dec 09 11:11:08 JST 2018
+base.0=/Users/ozaki/Applications/react/AdventCalendarSample/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

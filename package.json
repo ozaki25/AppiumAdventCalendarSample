@@ -8,15 +8,13 @@
   },
   "dependencies": {
     "react": "16.6.1",
-    "react-native": "0.57.7"
+    "react-native": "0.58.0-rc.1"
   },
   "devDependencies": {
-    "appium": "^1.10.0",
     "babel-jest": "23.6.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.50.0",
-    "react-test-renderer": "16.6.1",
-    "wd": "^1.11.1"
+    "react-test-renderer": "16.6.1"
   },
   "jest": {
     "preset": "react-native"

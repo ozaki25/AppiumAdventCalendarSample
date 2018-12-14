@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "react": "16.6.1",
-    "react-native": "0.58.0-rc.1"
+    "react-native": "0.58.0-rc.1",
+    "react-navigation": "2"
   },
   "devDependencies": {
     "appium": "^1.10.0",

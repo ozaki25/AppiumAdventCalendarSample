@@ -1,49 +1,57 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
+import React from 'react';
+import { Button, ScrollView, Text, TextInput, View } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+const SampleA = ({ navigation }) => (
+  <ScrollView accessibilityLabel="SampleA">
+    <Text style={{ height: 1000 }}>↓スクロールしてください↓</Text>
+    <Button
+      accessibilityLabel="NextButton"
+      title="次のページへ"
+      onPress={() => navigation.navigate('SampleB')}
+    />
+  </ScrollView>
+);
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu',
-});
+SampleA.navigationOptions = { title: 'SampleA' };
 
-type Props = {};
-export default class App extends Component<Props> {
+class SampleB extends React.Component {
+  state = { text: '' };
   render() {
     return (
-      // accessibilityLabelを追加
-      <View style={styles.container} accessibilityLabel="App">
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+      <View accessibilityLabel="SampleB" style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <Text>名前</Text>
+        <TextInput
+          accessibilityLabel="TextInput"
+          onChangeText={text => this.setState({ text })}
+          style={{ backgroundColor: 'white', width: 300 }}
+        />
+        <Button
+          accessibilityLabel="NextButton"
+          title="次のページへ"
+          onPress={() => this.props.navigation.navigate('SampleC', { text: this.state.text })}
+        />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+SampleB.navigationOptions = { title: 'SampleB' };
+
+const SampleC = ({ navigation }) => (
+  <View accessibilityLabel="SampleC">
+    <Text accessibilityLabel="text">{navigation.state.params.text}</Text>
+  </View>
+);
+
+SampleC.navigationOptions = { title: 'SampleC' };
+
+const AppNavigator = StackNavigator({
+  SampleA: { screen: SampleA },
+  SampleB: { screen: SampleB },
+  SampleC: { screen: SampleC },
 });
+
+const App = () => <AppNavigator />;
+
+export default App;
